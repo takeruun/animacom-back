@@ -6,6 +6,13 @@ Rails.application.routes.draw do
         registrations: 'v1/users/auth/registrations'
     }
     end
+    namespace :posts do
+      get '/' => 'index#index'
+      post '/' => 'create#create'
+    end
+    namespace :categories do
+      get '/' => 'index#index'
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/health' => 'health#health'
