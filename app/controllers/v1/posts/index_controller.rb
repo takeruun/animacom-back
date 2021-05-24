@@ -1,7 +1,7 @@
 class V1::Posts::IndexController < ApplicationController
   def index
-    @posts = Posts.all
+    @posts = Post.all
 
-    render 'v1/posts/index'
+    render 'v1/posts/index', formats: :json
   end
 end
