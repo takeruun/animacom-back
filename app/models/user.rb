@@ -7,5 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   has_many :posts
 end
