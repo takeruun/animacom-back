@@ -1,16 +1,17 @@
-class V1::Posts::CreateController < ApplicationController
+class V1::Posts::EditController < ApplicationController
   before_action :authenticate_v1_users_user!
 
-  def create
-    @post = Post.new(
-      user_id: current_v1_users_user.id,
+  def edit
+    @post = current_v1_users_user.posts.find_by(id: params[:id])
+
+    @post.update(
       title: post_params[:title],
       sub_title: post_params[:sub_title],
       body: post_params[:body],      
       category_id: post_params[:category_id],
     )
 
-    if @post.save
+    if @post.valid?
       render 'v1/posts/show', formats: :json
     else
       render json: { error: @post.errors.full_messages }
