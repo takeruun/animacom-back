@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     }
     end
     namespace :posts do
+      get '/:id' => 'show#show'
+      put '/:id' => 'edit#edit'
       get '/' => 'index#index'
       post '/' => 'create#create'
     end

@@ -65,4 +65,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.logger = Logger.new(STDOUT)
+
+  Jbuilder.key_format camelize: :lower
 end
