@@ -33,6 +33,7 @@ jobs:
     working_directory: ~/animacom-back
     steps:
       - checkout
+      - aws-cli/setup
       - restore_cache:
           keys:
             - rails-bundle-v2-{{ checksum "Gemfile.lock" }}
