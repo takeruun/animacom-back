@@ -1,5 +1,6 @@
 version: 2.1
 orbs:
+  aws-cli: circleci/aws-cli@2.0.3
   aws-ecr: circleci/aws-ecr@6.15.3
   aws-ecs: circleci/aws-ecs@2.1.0
 jobs:
@@ -24,6 +25,11 @@ jobs:
           DEFAULT_REGION: ap-northeast-1
           AWS_SECRET_ACCESS_KEY: dummy
           AWS_ACCESS_KEY_ID: dummy
+    environment:
+      AWS_DEFAULT_REGION: ap-northeast-1
+      AWS_SECRET_ACCESS_KEY: dummy
+      AWS_ACCESS_KEY_ID: dummy
+
     working_directory: ~/animacom-back
     steps:
       - checkout
