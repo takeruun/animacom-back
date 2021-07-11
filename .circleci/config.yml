@@ -18,6 +18,14 @@ jobs:
           MYSQL_HOST: 127.0.0.1
           MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: password
+      - image: localstack/localstack:latest
+          ports:
+          - "4566:4566"
+        environment:
+          SERVICES: s3
+          DEFAULT_REGION: ap-northeast-1
+          AWS_SECRET_ACCESS_KEY: dummy
+          AWS_ACCESS_KEY_ID: dummy
     working_directory: ~/animacom-back
     steps:
       - checkout
