@@ -10,6 +10,10 @@ class V1::Posts::CreateController < ApplicationController
       category_id: post_params[:category_id],
     )
 
+    post_params[:images].each.with_index do |image, i|
+      @post.images.build(image: image[:file])
+    end
+
     if @post.save
       render 'v1/posts/show', formats: :json
     else
@@ -25,7 +29,10 @@ class V1::Posts::CreateController < ApplicationController
       :sub_title,
       :body,
       :category_id,
-      images: [],
+      images: [
+        :id,
+        :file,
+      ],
     )
   end
 end

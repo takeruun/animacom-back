@@ -11,6 +11,15 @@ class V1::Posts::EditController < ApplicationController
       category_id: post_params[:category_id],
     )
 
+    image_ids_not_delete = post_params[:images].map{|n| n[:id].to_i if n[:id].present? }.compact
+    @post.images.where.not(id: image_ids_not_delete).destroy_all
+
+    post_params[:images].each do |image|
+      unless image[:id].present?
+        @post.images.create(image: image[:file])
+      end
+    end
+
     if @post.valid?
       render 'v1/posts/show', formats: :json
     else
@@ -26,7 +35,10 @@ class V1::Posts::EditController < ApplicationController
       :sub_title,
       :body,
       :category_id,
-      images: [],
+      images: [
+        :id,
+        :file,
+      ],
     )
   end
 end

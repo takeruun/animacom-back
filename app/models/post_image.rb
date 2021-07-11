@@ -1,5 +1,7 @@
 class PostImage < ApplicationRecord
+  mount_uploader :image, ImagesUploader
+
   belongs_to :post
 
-  mount_uploader :image, ImagesUploader
+  validates :image, presence: true
 end

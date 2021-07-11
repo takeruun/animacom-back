@@ -21,7 +21,20 @@ services:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - mysql-data:/var/lib/mysql
+  
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: s3
+      DEFAULT_REGION: ap-northeast-1
+      DATA_DIR: /tmp/localstack/data
+    volumes:
+      - localstack_data:/tmp/localstack
 
 volumes:
   bundle:
   mysql-data:
+  localstack_data:

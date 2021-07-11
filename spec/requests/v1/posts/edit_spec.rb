@@ -9,6 +9,7 @@ RSpec.describe "V1::Posts::Edit", type: :request do
 
       before do
         @post = create(:post, user: user, category: category)
+        @image = create(:post_image, post: @post)
         @category = create(:category)
       end
 
@@ -18,7 +19,17 @@ RSpec.describe "V1::Posts::Edit", type: :request do
             title: "EDIT_TITLE",
             sub_title: "EDIT_SUB_TITLE",
             body: "EDIT_BODY",
-            category_id: @category.id
+            category_id: @category.id,
+            images: [
+              {
+                id: @image.id,
+                file: nil,
+              },
+              {
+                id: nil,
+                file: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.png')),
+              }
+            ]
           }
         }
         json = JSON.parse(response.body)
@@ -28,6 +39,7 @@ RSpec.describe "V1::Posts::Edit", type: :request do
         expect(json["post"]["sub_title"]).to eq('EDIT_SUB_TITLE')
         expect(json["post"]["body"]).to eq('EDIT_BODY')
         expect(json["post"]["category_id"]).to eq(@category.id)
+        expect(json["post"]["images"].length).to eq(2)
       end
     end
   end

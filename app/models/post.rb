@@ -5,5 +5,5 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  has_many :post_images
+  has_many :images, class_name: 'PostImage', dependent: :destroy
 end

@@ -13,7 +13,13 @@ RSpec.describe "V1::Posts::Create", type: :request do
             title: "TITLE",
             sub_title: "SUB_TITLE",
             body: "BODY",
-            category_id: category.id
+            category_id: category.id,
+            images: [
+              {
+                id: '',
+                file: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.png')),
+              }
+            ],
           }
         }
         json = JSON.parse(response.body)
@@ -23,6 +29,7 @@ RSpec.describe "V1::Posts::Create", type: :request do
         expect(json["post"]["sub_title"]).to eq('SUB_TITLE')
         expect(json["post"]["body"]).to eq('BODY')
         expect(json["post"]["category_id"]).to eq(category.id)
+        expect(json["post"]["images"][0]["image_path"].present?).to eq(true)
       end
     end
   end
