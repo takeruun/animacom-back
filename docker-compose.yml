@@ -23,7 +23,7 @@ services:
       - mysql-data:/var/lib/mysql
   
   localstack:
-    container_name: localstack
+    container_name: localstack_
     image: localstack/localstack:latest
     ports:
       - "4566:4566"
@@ -34,7 +34,15 @@ services:
     volumes:
       - localstack_data:/tmp/localstack
 
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
 volumes:
   bundle:
   mysql-data:
   localstack_data:
+  redis-data:
