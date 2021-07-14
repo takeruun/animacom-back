@@ -7,10 +7,14 @@ Rails.application.routes.draw do
     }
     end
     namespace :posts do
+      namespace :latest do
+        get '/' => 'index#index'
+      end
       get '/:id' => 'show#show'
       put '/:id' => 'edit#edit'
-      get '/' => 'index#index'
-      post '/' => 'create#create'
+      get '/'    => 'index#index'
+      post '/'   => 'create#create'
+      delete '/:id' => 'destroy#destroy'
     end
     namespace :categories do
       get '/' => 'index#index'
