@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "V1::Posts", type: :request do
-  describe "GET /" do
-    context "未ログイン" do
+  describe "GET /" do                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    context "未ログイン"
       let!(:user) { create(:user) }
       let!(:category) { create(:category) }
       let!(:posts) { create_list :post, 1, user: user, category: category }
