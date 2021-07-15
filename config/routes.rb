@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       namespace :latest do
         get '/' => 'index#index'
       end
+      namespace :day_ago do
+        get '/' => 'index#index'
+      end
       get '/:id' => 'show#show'
       put '/:id' => 'edit#edit'
       get '/'    => 'index#index'
