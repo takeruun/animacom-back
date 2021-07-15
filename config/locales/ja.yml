@@ -1,0 +1,13 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      date_only: "%Y/%m/%d"
+      datepicker: "%Y-%m-%d %H:%M"
+  enums:
+    reaction:
+      class:
+        cute: かわいい
+        fav: お気に入り
+        good: いいね
+        cool: かっこいい

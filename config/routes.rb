@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     }
     end
     namespace :posts do
+      namespace :reactions do
+        post '/:post_id' => 'create#create'
+        delete '/:id' => 'destroy#destroy'
+      end
       namespace :latest do
         get '/' => 'index#index'
       end
