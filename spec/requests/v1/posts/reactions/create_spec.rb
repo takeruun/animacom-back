@@ -15,7 +15,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
-              kind: 1
+              kind: "cute"
             }
           }
 
@@ -28,7 +28,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
-              kind: 2
+              kind: "fav"
             }
           }
 
@@ -41,7 +41,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
-              kind: 3
+              kind: "good"
             }
           }
 
@@ -54,7 +54,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
-              kind: 4
+              kind: "cool"
             }
           }
 
