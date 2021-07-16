@@ -1,6 +1,7 @@
 class V1::Posts::DayAgo::IndexController < ApplicationController
+  before_action :authenticate_v1_users_user!
+
   def index
-    p params
     result = Rails.cache.read(params.to_json)
     return render json: result unless result.nil?
 

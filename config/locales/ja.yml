@@ -6,7 +6,7 @@ ja:
       datepicker: "%Y-%m-%d %H:%M"
   enums:
     reaction:
-      class:
+      kind:
         cute: かわいい
         fav: お気に入り
         good: いいね
