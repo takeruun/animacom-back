@@ -5,9 +5,10 @@ RSpec.describe "V1::Posts::Latest", type: :request do
     let!(:user) { create(:user) }
     let!(:category) { create(:category) }
     let!(:posts) { create_list :post, 1, user: user, category: category }
+    let(:auth_tokens) { sign_in({ email: user.email, password: "password" }) }
 
     it "本日投稿されたデータ取得できる" do
-      get "/v1/posts/latest"
+      get "/v1/posts/latest", headers: auth_tokens
       json = JSON.parse(response.body)
       
       expect(response).to have_http_status(:success)
@@ -16,7 +17,7 @@ RSpec.describe "V1::Posts::Latest", type: :request do
     end
 
     it "正しいデータが取得できる" do
-      get "/v1/posts"
+      get "/v1/posts", headers: auth_tokens
       json = JSON.parse(response.body)
 
       expect(response).to have_http_status(:success)
