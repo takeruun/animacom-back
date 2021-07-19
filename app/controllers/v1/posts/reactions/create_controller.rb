@@ -13,7 +13,8 @@ class V1::Posts::Reactions::CreateController < ApplicationController
     if reaction.save
       render 'v1/posts/show', formats: :json
     else
-      render json: { status: 400, error: I18n.t("enums.reaction.kind.#{reaction_params[:kind]}") + "に失敗しました。", msg: reaction.errors.full_messages }
+      error = I18n.t("enums.reaction.kind.#{reaction_params[:kind]}") + "に失敗しました。" 
+      render status: 400, json: { error: error, msg: reaction.errors.full_messages }
     end
   end
 

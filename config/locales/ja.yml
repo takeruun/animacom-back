@@ -4,6 +4,11 @@ ja:
       default: "%Y/%m/%d %H:%M"
       date_only: "%Y/%m/%d"
       datepicker: "%Y-%m-%d %H:%M"
+  activerecord:
+    attributes:
+      reaction:
+        kind: リアクション
+
   enums:
     reaction:
       kind:
