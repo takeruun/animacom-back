@@ -1,7 +1,8 @@
 class Reaction < ApplicationRecord
   belongs_to :user
   belongs_to :post
-  validates_uniqueness_of :post_id, scope: :user_id
+
+  validate :uniq_reaction?
 
   enum kind: {
     cute: 1,
@@ -9,4 +10,10 @@ class Reaction < ApplicationRecord
     good: 3,
     cool: 4,
   }
+
+  private
+
+  def uniq_reaction?
+    errors.add(:kind, 'は各1回しかできません。') if user.reactions.find_by(post_id: post.id, kind: kind).present?
+  end
 end
