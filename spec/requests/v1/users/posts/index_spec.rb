@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Posts::Index", type: :request do
+RSpec.describe "V1::Users::Posts::Index", type: :request do
   describe "GET /" do
     let!(:user) { create(:user) }
     let!(:category) { create(:category) }
@@ -8,11 +8,7 @@ RSpec.describe "V1::Posts::Index", type: :request do
     
     shared_examples '全投稿データ取得できる' do
       it do
-        if defined?(auth_tokens)
-          get '/v1/posts', headers: auth_tokens
-        else
-          get '/v1/posts'
-        end
+        get '/v1/users/posts', headers: auth_tokens
         json = JSON.parse(response.body)
         
         expect(response).to have_http_status(:success)
@@ -22,11 +18,7 @@ RSpec.describe "V1::Posts::Index", type: :request do
 
     shared_examples '正しいデータが取得できる' do
       it do
-        if defined?(auth_tokens)
-          get '/v1/posts', headers: auth_tokens
-        else
-          get '/v1/posts'
-        end
+        get '/v1/users/posts', headers: auth_tokens
         json = JSON.parse(response.body)
 
         expect(response).to have_http_status(:success)
@@ -36,6 +28,10 @@ RSpec.describe "V1::Posts::Index", type: :request do
         expect(json['posts'][0]['sub_title']).to eq(posts.first.sub_title)
         expect(json['posts'][0]['body']).to eq(posts.first.body)
         expect(json['posts'][0]['category_id']).to eq(category.id)
+        expect(json['posts'][0]['already_cuted']).to eq(false)
+        expect(json['posts'][0]['already_faved']).to eq(false)
+        expect(json['posts'][0]['already_gooded']).to eq(false)
+        expect(json['posts'][0]['already_cooled']).to eq(false)
       end
     end
 
@@ -47,8 +43,6 @@ RSpec.describe "V1::Posts::Index", type: :request do
     end
 
     context 'ログインなし' do
-      it_behaves_like '全投稿データ取得できる'
-      it_behaves_like '正しいデータが取得できる'
     end
   end
 end

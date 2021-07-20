@@ -1,4 +1,4 @@
-class V1::Posts::EditController < ApplicationController
+class V1::Users::Posts::EditController < ApplicationController
   before_action :authenticate_v1_users_user!
 
   def edit
@@ -21,7 +21,7 @@ class V1::Posts::EditController < ApplicationController
     end
 
     if @post.valid?
-      render 'v1/posts/show', formats: :json
+      render 'v1/users/posts/show', formats: :json
     else
       render json: { error: @post.errors.full_messages }
     end

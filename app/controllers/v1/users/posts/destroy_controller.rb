@@ -1,4 +1,4 @@
-class V1::Posts::DestroyController < ApplicationController
+class V1::Users::Posts::DestroyController < ApplicationController
   before_action :authenticate_v1_users_user!
 
   def destroy

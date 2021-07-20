@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Posts::Reactions::Create", type: :request do
+RSpec.describe "V1::Users::Posts::Reactions::Create", type: :request do
   describe "POST /" do
     let!(:user) { create(:user) }
     let!(:category) { create(:category) }
@@ -12,7 +12,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
       end
      
       it '「かわいい」できる' do
-        post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+        post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "cute"
@@ -27,10 +27,11 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         expect(json['post']['good_count']).to eq(0)
         expect(json['post']['cool_count']).to eq(0)
         expect(json['post']['already_cuted']).to eq(true)
+
       end
       
       it '「お気に入り」できる' do
-        post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+        post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "fav"
@@ -48,7 +49,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
       end
 
       it '「いいね」できる' do
-        post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+        post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "good"
@@ -66,7 +67,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
       end
 
       it '「かっこいい」できる' do
-        post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+        post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "cool"
@@ -95,7 +96,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
 
       describe '2回リアクションできない' do
         it '「かわいい」できない' do
-          post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+          post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "cute"
@@ -109,7 +110,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         end
 
         it '「お気に入り」できない' do
-          post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+          post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "fav"
@@ -123,7 +124,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         end
 
         it '「いいね」できない' do
-          post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+          post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "good"
@@ -137,7 +138,7 @@ RSpec.describe "V1::Posts::Reactions::Create", type: :request do
         end
 
         it '「かっこいい」できない' do
-          post "/v1/posts/reactions/#{@post.id}", headers: auth_tokens,
+          post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
             reaction: {
               kind: "cool"

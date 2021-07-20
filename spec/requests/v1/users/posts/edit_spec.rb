@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Posts::Edit", type: :request do
+RSpec.describe "V1::Users::Posts::Edit", type: :request do
   describe "PUT /" do
     context "ログイン時" do
       let(:user) { create(:user) }
@@ -14,7 +14,7 @@ RSpec.describe "V1::Posts::Edit", type: :request do
       end
 
       it "投稿編集できる" do
-        put "/v1/posts/#{@post.id}", headers: auth_tokens, params: {
+        put "/v1/users/posts/#{@post.id}", headers: auth_tokens, params: {
           post: {
             title: "EDIT_TITLE",
             sub_title: "EDIT_SUB_TITLE",

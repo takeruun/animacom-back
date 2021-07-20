@@ -1,4 +1,4 @@
-class V1::Posts::CreateController < ApplicationController
+class V1::Users::Posts::CreateController < ApplicationController
   before_action :authenticate_v1_users_user!
 
   def create
@@ -15,7 +15,7 @@ class V1::Posts::CreateController < ApplicationController
     end
 
     if @post.save
-      render 'v1/posts/show', formats: :json
+      render 'v1/users/posts/show', formats: :json
     else
       render json: { error: @post.errors.full_messages }
     end
