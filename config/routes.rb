@@ -7,6 +7,12 @@ Rails.application.routes.draw do
       }
       namespace :posts do
         namespace :reactions do
+          namespace :bests do
+            get '/cute' => 'cute/index#index'
+            get '/fav'  => 'fav/index#index'
+            get '/good' => 'good/index#index'
+            get '/cool' => 'cool/index#index'
+          end
           post   '/:post_id' => 'create#create'
           delete '/:id'      => 'destroy#destroy'
         end
