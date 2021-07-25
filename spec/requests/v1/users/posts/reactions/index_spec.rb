@@ -19,15 +19,13 @@ RSpec.describe "V1::Users::Posts::Reactions::Index", type: :request do
       it do
         if defined?(auth_tokens)
           get '/v1/users/posts/reactions', headers: auth_tokens,
-            params: { reactions: {
-              kind: 'cute'
-              },
+            params: { 
+              kind: 'cute',
             }
         else
           get '/v1/users/posts/reactions',
-          params: { reactions: {
-            kind: 'cute'
-            },
+          params: { 
+            kind: 'cute',
           }
         end
 
@@ -43,15 +41,13 @@ RSpec.describe "V1::Users::Posts::Reactions::Index", type: :request do
       it do
         if defined?(auth_tokens)
           get '/v1/users/posts/reactions', headers: auth_tokens,
-            params: { reactions: {
-              kind: 'fav'
-              },
+            params: { 
+              kind: 'fav',
             }
         else
           get '/v1/users/posts/reactions',
-          params: { reactions: {
-            kind: 'fav'
-            },
+          params: { 
+            kind: 'fav',
           }
         end
 
@@ -67,15 +63,13 @@ RSpec.describe "V1::Users::Posts::Reactions::Index", type: :request do
       it do
         if defined?(auth_tokens)
           get '/v1/users/posts/reactions', headers: auth_tokens,
-            params: { reactions: {
-              kind: 'good'
-              },
+            params: { 
+              kind: 'good',
             }
         else
           get '/v1/users/posts/reactions',
-          params: { reactions: {
-            kind: 'good'
-            },
+          params: { 
+            kind: 'good',
           }
         end
 
@@ -91,17 +85,15 @@ RSpec.describe "V1::Users::Posts::Reactions::Index", type: :request do
       it do
         if defined?(auth_tokens)
           get '/v1/users/posts/reactions', headers: auth_tokens,
-            params: { reactions: {
-              kind: 'cool'
-              },
+            params: { 
+              kind: 'cool',
             }
         else
           get '/v1/users/posts/reactions',
-          params: { reactions: {
-            kind: 'cool'
-            },
+          params: { 
+            kind: 'cool',
           }
-        end
+        en d
 
         json = JSON.parse(response.body)
 
