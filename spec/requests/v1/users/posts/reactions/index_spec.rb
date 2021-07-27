@@ -93,7 +93,7 @@ RSpec.describe "V1::Users::Posts::Reactions::Index", type: :request do
           params: { 
             kind: 'cool',
           }
-        en d
+        end
 
         json = JSON.parse(response.body)
 
