@@ -1,4 +1,4 @@
-class V1::Posts::Reactions::CreateController < ApplicationController
+class V1::Users::Posts::Reactions::CreateController < ApplicationController
   before_action :authenticate_v1_users_user!
 
   def create
@@ -11,7 +11,7 @@ class V1::Posts::Reactions::CreateController < ApplicationController
     )
 
     if reaction.save
-      render 'v1/posts/show', formats: :json
+      render 'v1/users/posts/show', formats: :json
     else
       error = I18n.t("enums.reaction.kind.#{reaction_params[:kind]}") + "に失敗しました。" 
       render status: 400, json: { error: error, msg: reaction.errors.full_messages }

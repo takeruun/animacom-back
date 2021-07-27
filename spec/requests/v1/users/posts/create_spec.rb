@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Posts::Create", type: :request do
+RSpec.describe "V1::Users::Posts::Create", type: :request do
   describe "POST /" do
     context "ログイン時" do
       let!(:user) { create(:user) }
@@ -8,7 +8,7 @@ RSpec.describe "V1::Posts::Create", type: :request do
       let(:auth_tokens) { sign_in({ email: user.email, password: "password" }) }
 
       it "投稿できる" do
-        post "/v1/posts", headers: auth_tokens, params: {
+        post "/v1/users/posts", headers: auth_tokens, params: {
           post: {
             title: "TITLE",
             sub_title: "SUB_TITLE",
