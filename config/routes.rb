@@ -13,6 +13,9 @@ Rails.application.routes.draw do
             get '/good' => 'good/index#index'
             get '/cool' => 'cool/index#index'
           end
+          namespace :counts do
+            get '/' => 'index#index'
+          end
           get    '/'         => 'index#index'
           post   '/:post_id' => 'create#create'
           delete '/:id'      => 'destroy#destroy'
