@@ -5,6 +5,8 @@ Rails.application.routes.draw do
         sessions: 'v1/users/auth/sessions',
         registrations: 'v1/users/auth/registrations'
       }
+      get '/' => 'show#show'
+      put '/' => 'update#update'
       namespace :posts do
         namespace :reactions do
           namespace :bests do
