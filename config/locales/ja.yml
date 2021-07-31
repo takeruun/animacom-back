@@ -8,6 +8,9 @@ ja:
     attributes:
       reaction:
         kind: リアクション
+      user:
+        name: 名前
+        nickname: ニックネーム
 
   enums:
     reaction:
