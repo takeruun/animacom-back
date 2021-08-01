@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       end
     end
     namespace :posts do
+      namespace :search do
+        get '/' => 'index#index'
+      end
       namespace :reactions do
         namespace :bests do
           get '/cute' => 'cute/index#index'
