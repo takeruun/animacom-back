@@ -55,6 +55,9 @@ Rails.application.routes.draw do
     end
     namespace :categories do
       get '/' => 'index#index'
+      namespace :root do
+        get '/' => 'index#index'
+      end
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
