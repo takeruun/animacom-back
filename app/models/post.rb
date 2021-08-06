@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   belongs_to :category
   has_many :images, class_name: 'PostImage', dependent: :destroy
   has_many :reactions, dependent: :destroy
+  has_many :comments
 
   scope :kind_best_5, -> (kind) { left_outer_joins(:reactions)
                                     .where("reactions.kind = #{kind}")
