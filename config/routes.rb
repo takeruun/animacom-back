@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         get     '/'   => 'index#index'
         post    '/'   => 'create#create'
       end
+
     end
     namespace :posts do
       namespace :search do
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
       get '/'    => 'index#index'
       post '/'   => 'create#create'
       delete '/:id' => 'destroy#destroy'
+      get '/:post_id/comments' => 'comments/index#index'
     end
     namespace :categories do
       get '/' => 'index#index'
@@ -60,6 +62,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  mount ActionCable.server => '/v1/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/health' => 'health#health'
 end
