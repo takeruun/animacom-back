@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'anima-com.jp:3000'
+    origins 'anima-com.jp:3000', 'https://take-h.tk'
 
     resource '*',
       headers: :any,
