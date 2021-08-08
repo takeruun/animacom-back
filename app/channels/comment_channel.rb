@@ -11,7 +11,7 @@ class CommentChannel < ApplicationCable::Channel
 
   def create(data)
     comment = Comment.create(
-      user_id: data.fetch('user_id'),
+      user_id: User.find_by(email: data.fetch('user_email')).id,
       post_id: params[:post_id],
       body: data.fetch('body')
     )
