@@ -50,6 +50,21 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :redis_cache_store, {
+    driver: :hiredis,
+    url: ENV['REDIS_URL'],
+    expires_in: (ENV['REDIS_EXPIRES_IN_MINUTES'] || 5).to_i.minutes,
+    connect_timeout: (ENV['REDIS_CONNECT_TIMEOUT_SECONDS'] || 1.0).to_f,
+    read_timeout: (ENV['REDIS_READ_TIMEOUT_SECONDS'] || 0.5).to_f,
+    write_timeout: (ENV['REDIS_WRITE_TIMEOUT_SECONDS'] || 0.5).to_f,
+    reconnect_attempts: (ENV['REDIS_RECONNECT_ATTEMPTS'] || 0).to_i,
+    reconnect_delay: (ENV['REDIS_RECONNECT_DELAY_SECONDS'] || 1.0).to_f,
+    reconnect_delay_max: (ENV['REDIS_RECONNECT_DELAY_MAX_SECONDS'] || 2.0).to_f,
+    error_handler: -> (method:, returning:, exception:) {
+      error_info = { on: "on cache_store error_handler", error: exception, method: method, returning: returning }
+      Rails.logger.error error_info
+    },
+  }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
