@@ -1,4 +1,4 @@
-FROM nginx:1.19-alpine
+FROM nginx:1.18-alpine
 
 # インクルード用のディレクトリ内を削除
 RUN rm -f /etc/nginx/conf.d/*
