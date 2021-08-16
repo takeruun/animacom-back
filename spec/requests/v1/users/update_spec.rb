@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Users::Show", type: :request do
-  describe "GET /" do
+RSpec.describe "V1::Users::Update", type: :request do
+  describe "UPDATE /" do
     let!(:user) { create(:user) }
     let(:auth_tokens) { sign_in({ email: user.email, password: "password" }) }
 
