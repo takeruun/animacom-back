@@ -35,8 +35,8 @@ RSpec.describe "V1::Users::Update", type: :request do
         json = JSON.parse(response.body)
 
         expect(response.status).to eq(400)
-        expect(json['msg']).to eq('ユーザ情報更新失敗しました。')
-        expect(json['error'][0]).to eq('名前を入力してください')
+        expect(json['error']).to eq('ユーザ情報更新失敗しました。')
+        expect(json['msg'][0]).to eq('名前を入力してください')
       end
     end
   end

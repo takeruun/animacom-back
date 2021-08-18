@@ -9,7 +9,7 @@ class V1::Users::UpdateController < ApplicationController
     if @user.valid?
       render '/v1/users/show', formats: :json
     else
-      render status: 400, json: { error: @user.errors.full_messages, msg: 'ユーザ情報更新失敗しました。' }
+      render status: 400, json: { error: 'ユーザ情報更新失敗しました。', msg: @user.errors.full_messages }
     end
   end
 

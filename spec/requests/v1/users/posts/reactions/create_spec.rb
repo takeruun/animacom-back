@@ -10,7 +10,7 @@ RSpec.describe "V1::Users::Posts::Reactions::Create", type: :request do
       before do
         @post = create(:post, user: user, category: category)
       end
-     
+
       it '「かわいい」できる' do
         post "/v1/users/posts/reactions/#{@post.id}", headers: auth_tokens,
           params: {
