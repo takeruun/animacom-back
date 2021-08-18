@@ -1,5 +1,3 @@
 json.user do
-  json.id @user.id
-  json.name @user.name
-  json.nickname @user.nickname
+  json.partial! 'v1/users/index', user: @user
 end

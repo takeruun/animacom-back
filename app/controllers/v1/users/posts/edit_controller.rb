@@ -23,7 +23,7 @@ class V1::Users::Posts::EditController < ApplicationController
     if @post.valid?
       render 'v1/users/posts/show', formats: :json
     else
-      render json: { error: @post.errors.full_messages }
+      render json: { error: '投稿編集失敗しました。', msg: @post.errors.full_messages }
     end
   end
 

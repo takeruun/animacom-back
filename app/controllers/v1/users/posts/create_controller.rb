@@ -10,14 +10,16 @@ class V1::Users::Posts::CreateController < ApplicationController
       category_id: post_params[:category_id],
     )
 
-    post_params[:images].each.with_index do |image, i|
-      @post.images.build(image: image[:file])
+    if post_params[:images].present?
+      post_params[:images].each.with_index do |image, i|
+        @post.images.build(image: image[:file])
+      end
     end
 
     if @post.save
       render 'v1/users/posts/show', formats: :json
     else
-      render json: { error: @post.errors.full_messages }
+      render json: { error: '投稿作成失敗しました。', msg: @post.errors.full_messages }
     end
   end
 

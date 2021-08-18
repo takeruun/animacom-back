@@ -28,7 +28,13 @@ Rails.application.routes.draw do
         get     '/'   => 'index#index'
         post    '/'   => 'create#create'
       end
-
+      namespace :follows do
+        get '/'           => 'index#index'
+        get '/followings' => 'index#followings'
+        get '/followers'  => 'index#followers'
+        post '/'          => 'create#create'
+        delete '/'        => 'destroy#destroy'
+      end
     end
     namespace :posts do
       namespace :search do
