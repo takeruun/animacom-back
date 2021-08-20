@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "V1::Users::Show", type: :request do
-  describe "GET /" do
+  describe "GET /my_page" do
     let!(:user) { create(:user) }
     let(:auth_tokens) { sign_in({ email: user.email, password: "password" }) }
 
-    it 'ユーザ情報を取得できる' do
-      get '/v1/users', headers: auth_tokens
+    it '自分の情報を取得できる' do
+      get '/v1/users/my_page', headers: auth_tokens
       json = JSON.parse(response.body)
 
       expect(response).to have_http_status(:success)

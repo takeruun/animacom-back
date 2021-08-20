@@ -3,9 +3,10 @@ class V1::Users::Follows::CreateController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
+      @user = current_v1_users_user
       follow_user = User.find(params[:follow_id])
-      current_v1_users_user.followings_relationships.create!(follow_id: follow_user.id)
-      @followings = current_v1_users_user.followings
+      @user.followings_relationships.create!(follow_id: follow_user.id)
+      @followings = @user.followings
 
       render 'v1/users/follows/followings', formats: :json
     rescue => e

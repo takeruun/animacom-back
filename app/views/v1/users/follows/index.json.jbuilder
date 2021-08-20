@@ -1,8 +1,4 @@
 json.follows do
-  json.followers @followers do |follower|
-    json.partial! 'v1/users/index', user: follower
-  end
-  json.followings @followings do |following|
-    json.partial! 'v1/users/index', user: following
-  end
+  json.partial! 'v1/users/follows/followers', followers: @followers, user: @user
+  json.partial! 'v1/users/follows/followings', followings: @followings, user: @user
 end

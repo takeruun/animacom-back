@@ -2,8 +2,9 @@ class V1::Users::Follows::IndexController < ApplicationController
   before_action :authenticate_v1_users_user!
 
   def index
-    @followings = current_v1_users_user.followings
-    @followers = current_v1_users_user.followers
+    @user = current_v1_users_user
+    @followings = @user.followings
+    @followers = @user.followers
 
     render 'v1/users/follows/index', formats: :json
   end

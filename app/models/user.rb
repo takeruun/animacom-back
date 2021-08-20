@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+  mount_uploader :image, ImagesUploader
 
   validates :name, presence: true
   validates :email, presence: true
@@ -31,5 +32,9 @@ class User < ActiveRecord::Base
 
   def already_cooled?(post_id)
     reactions.exists?(post_id: post_id, kind: Reaction.kinds[:cool])
+  end
+
+  def follow?(user)
+    followings_relationships.where(follow_id: user.id).present?
   end
 end

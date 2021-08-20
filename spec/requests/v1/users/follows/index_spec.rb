@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Users::Follows::Destroy", type: :request do
+RSpec.describe "V1::Users::Follows::Index", type: :request do
   describe 'GET /' do
     let(:users) { create_list(:user, 3) }
     let(:auth_tokens) { sign_in({ email: users.first.email, password: "password" }) }
@@ -19,7 +19,9 @@ RSpec.describe "V1::Users::Follows::Destroy", type: :request do
 
         expect(response).to have_http_status(:success)
         expect(json['follows']['followers'].length).to eq(1)
+        expect(json['follows']['follower_count']).to eq(1)
         expect(json['follows']['followings'].length).to eq(1)
+        expect(json['follows']['following_count']).to eq(1)
       end
 
       it 'フォロワー数取得' do

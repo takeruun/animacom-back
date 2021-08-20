@@ -18,6 +18,9 @@ RSpec.describe "V1::Users::Follows::Create", type: :request do
         expect(json['followings'][0]['id']).to eq(users[1].id)
         expect(json['followings'][0]['name']).to eq(users[1].name)
         expect(json['followings'][0]['nickname']).to eq(users[1].nickname)
+        expect(json['followings'][0]['follower_count']).to eq(1)
+        expect(json['followings'][0]['following_count']).to eq(0)
+        expect(json['followings'][0]['follow']).to eq(true)
       end
     end
 

@@ -4,8 +4,9 @@ class V1::Users::Follows::DestroyController < ApplicationController
   def destroy
     ActiveRecord::Base.transaction do
       follow_user = User.find(params[:follow_id])
-      current_v1_users_user.followings_relationships.find_by(follow_id: follow_user.id).destroy!
-      @followings = current_v1_users_user.followings
+      @user = current_v1_users_user
+      @user.followings_relationships.find_by(follow_id: follow_user.id).destroy!
+      @followings = @user.followings
 
       render 'v1/users/follows/followings', formats: :json
     rescue => e

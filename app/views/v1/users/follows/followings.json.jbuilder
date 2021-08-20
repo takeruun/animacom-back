@@ -1,3 +1,1 @@
-json.followings @followings do |following|
-  json.partial! 'v1/users/index', user: following
-end
+json.partial! 'v1/users/follows/followings', followings: @followings, user: @user

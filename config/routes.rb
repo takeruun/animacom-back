@@ -5,8 +5,6 @@ Rails.application.routes.draw do
         sessions: 'v1/users/auth/sessions',
         registrations: 'v1/users/auth/registrations'
       }
-      get '/' => 'show#show'
-      put '/' => 'update#update'
       namespace :posts do
         namespace :reactions do
           namespace :bests do
@@ -35,6 +33,9 @@ Rails.application.routes.draw do
         post '/'          => 'create#create'
         delete '/'        => 'destroy#destroy'
       end
+      get '/my_page' => 'show#my_page'
+      get '/:user_id' => 'show#show'
+      put '/' => 'update#update'
     end
     namespace :posts do
       namespace :search do
