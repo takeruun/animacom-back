@@ -33,9 +33,10 @@ Rails.application.routes.draw do
         post '/'          => 'create#create'
         delete '/'        => 'destroy#destroy'
       end
-      get '/my_page' => 'show#my_page'
+      get '/'         => 'index#index'
+      get '/my_page'  => 'show#my_page'
       get '/:user_id' => 'show#show'
-      put '/' => 'update#update'
+      put '/'         => 'update#update'
     end
     namespace :posts do
       namespace :search do
