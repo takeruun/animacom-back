@@ -18,7 +18,7 @@ RSpec.describe "V1::Users::Auth::Registrations", type: :request do
         expect(response).to have_http_status(:success)
         expect(json['user']['name']).to eq('TEST')
         expect(json['user']['nickname']).to eq('NICKNAME_TEST')
-        expect(json['user']['image_path'].present?).to eq(true)
+        expect(json['user']['image']['image_path'].present?).to eq(true)
       end
     end
   end
