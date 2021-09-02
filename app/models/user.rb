@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :followers_relationships, class_name: 'Follow', foreign_key: 'follow_id', dependent: :destroy
   has_many :followings, through: :followings_relationships, source: :follow
   has_many :followers, through: :followers_relationships, source: :user
+  has_many :pets, dependent: :destroy
 
   def already_cuted?(post_id)
     reactions.exists?(post_id: post_id, kind: Reaction.kinds[:cute])
