@@ -33,6 +33,12 @@ Rails.application.routes.draw do
         post '/'          => 'create#create'
         delete '/'        => 'destroy#destroy'
       end
+      namespace :pets do
+        get     '/'     => 'index#index'
+        post    '/'     => 'create#create'
+        get     '/:id'  => 'show#show'
+        delete  '/:id'  => 'destroy#destroy'
+      end
       get '/'         => 'index#index'
       get '/my_page'  => 'show#my_page'
       get '/:user_id' => 'show#show'

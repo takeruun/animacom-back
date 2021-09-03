@@ -6,6 +6,7 @@ class Pet < ApplicationRecord
   validates :name, presence: true
   validates :age, presence: true
   validates :gender, presence: true
+  validates :image,  presence: true
 
   enum gender: {
     men: 0,
