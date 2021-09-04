@@ -4,6 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "TEST#{n}@example.com"}
     sequence(:nickname) { |n| "test_#{n}"}
     sequence(:password) { |n| "password"}
+    sequence(:introduction) { |n| "introduction_#{n}" }
 
     trait(:with_posts) do
       after(:create) do |user, evaluator|

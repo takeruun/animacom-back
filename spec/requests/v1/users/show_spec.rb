@@ -14,6 +14,7 @@ RSpec.describe "V1::Users::Show", type: :request do
       expect(json['user']['id']).to eq(user.id)
       expect(json['user']['name']).to eq(user.name)
       expect(json['user']['nickname']).to eq(user.nickname)
+      expect(json['user']['introduction']).to eq(user.introduction)
       expect(json['user']['pet_count']).to eq(1)
     end
   end
@@ -32,6 +33,7 @@ RSpec.describe "V1::Users::Show", type: :request do
       expect(json['user']['id']).to eq(other_user.id)
       expect(json['user']['name']).to eq(other_user.name)
       expect(json['user']['nickname']).to eq(other_user.nickname)
+      expect(json['user']['introduction']).to eq(other_user.introduction)
       expect(json['user']['pet_count']).to eq(1)
     end
   end
