@@ -11,6 +11,8 @@ ja:
       user:
         name: 名前
         nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
       post:
         title: タイトル
         body: 本文
