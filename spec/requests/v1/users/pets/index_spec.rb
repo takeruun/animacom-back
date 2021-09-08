@@ -11,6 +11,7 @@ RSpec.describe "V1::Users::Pets::Index", type: :request do
 
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:success)
+      expect(json['pets'][0]['id']).to eq(pet.id)
       expect(json['pets'][0]['name']).to eq(pet.name)
       expect(json['pets'][0]['age']).to eq(pet.age)
       expect(json['pets'][0]['gender']).to eq(pet.gender_i18n)
