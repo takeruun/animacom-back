@@ -14,7 +14,8 @@ RSpec.describe "V1::Users::Pets::Index", type: :request do
       expect(json['pets'][0]['id']).to eq(pet.id)
       expect(json['pets'][0]['name']).to eq(pet.name)
       expect(json['pets'][0]['age']).to eq(pet.age)
-      expect(json['pets'][0]['gender']).to eq(pet.gender_i18n)
+      expect(json['pets'][0]['gender']['id']).to eq(pet.gender_before_type_cast)
+      expect(json['pets'][0]['gender']['name']).to eq(pet.gender_i18n)
     end
 
     it '複数の場合' do

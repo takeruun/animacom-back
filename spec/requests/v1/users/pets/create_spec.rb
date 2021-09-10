@@ -19,7 +19,8 @@ RSpec.describe "V1::Users::Pets::Create", type: :request do
       expect(response).to have_http_status(:success)
       expect(json['pet']['name']).to eq('test')
       expect(json['pet']['age']).to eq(1)
-      expect(json['pet']['gender']).to eq('オス')
+      expect(json['pet']['gender']['id']).to eq(0)
+      expect(json['pet']['gender']['name']).to eq('オス')
     end
 
     context '失敗系' do

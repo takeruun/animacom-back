@@ -14,7 +14,8 @@ RSpec.describe "V1::Users::Pets::Show", type: :request do
       expect(json['pet']['id']).to eq(pet.id)
       expect(json['pet']['name']).to eq(pet.name)
       expect(json['pet']['age']).to eq(pet.age)
-      expect(json['pet']['gender']).to eq(pet.gender_i18n)
+      expect(json['pet']['gender']['id']).to eq(pet.gender_before_type_cast)
+      expect(json['pet']['gender']['name']).to eq(pet.gender_i18n)
     end
   end
 end
