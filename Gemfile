@@ -24,7 +24,7 @@ gem 'hiredis'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,8 +42,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'rack-cors'
-
 gem 'devise','4.7.3'
 gem 'devise_token_auth'
 
@@ -54,5 +52,6 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 
 gem 'rails-i18n'
+gem 'enum_help'
 
 gem 'ancestry'

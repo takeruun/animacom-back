@@ -13,6 +13,7 @@ RSpec.describe "V1::Users::Update", type: :request do
             name: 'UPDATE_NAME',
             nickname: 'UPDATE_NICK_NAME',
             image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.png')),
+            introduction: 'TEST_INTRODUCTION',
           }
         }
         json = JSON.parse(response.body)
@@ -21,6 +22,7 @@ RSpec.describe "V1::Users::Update", type: :request do
         expect(json['user']['id']).to eq(user.id)
         expect(json['user']['name']).to eq('UPDATE_NAME')
         expect(json['user']['nickname']).to eq('UPDATE_NICK_NAME')
+        expect(json['user']['introduction']).to eq('TEST_INTRODUCTION')
         expect(json['user']['image']['image_path'].present?).to eq(true)
       end
     end

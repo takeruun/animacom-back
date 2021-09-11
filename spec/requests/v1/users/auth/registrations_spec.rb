@@ -12,12 +12,14 @@ RSpec.describe "V1::Users::Auth::Registrations", type: :request do
           nickname: 'NICKNAME_TEST',
           password: '12345678',
           image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.png')),
+          introduction: 'TEST_INTRODUCTION',
         }
         json = JSON.parse(response.body)
 
         expect(response).to have_http_status(:success)
         expect(json['user']['name']).to eq('TEST')
         expect(json['user']['nickname']).to eq('NICKNAME_TEST')
+        expect(json['user']['introduction']).to eq('TEST_INTRODUCTION')
         expect(json['user']['image']['image_path'].present?).to eq(true)
       end
     end

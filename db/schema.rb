@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_154244) do
+ActiveRecord::Schema.define(version: 2021_09_04_135441) do
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2021_08_05_154244) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.integer "gender"
+    t.string "image"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "post_images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -84,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_154244) do
     t.string "nickname"
     t.string "image"
     t.string "email"
+    t.text "introduction"
     t.text "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -96,6 +108,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_154244) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "follows", "users"
+  add_foreign_key "pets", "users"
   add_foreign_key "post_images", "posts"
   add_foreign_key "reactions", "posts"
   add_foreign_key "reactions", "users"
