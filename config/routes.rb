@@ -79,6 +79,10 @@ Rails.application.routes.draw do
       get '/followings/:user_id' => 'index#followings'
       get '/followers/:user_id'  => 'index#followers'
     end
+    namespace :pets do
+      get '/:user_id' => 'index#index'
+      get '/:id'      => 'show#show'
+    end
   end
   mount ActionCable.server => '/v1/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
