@@ -1,6 +1,4 @@
 class V1::Pets::ShowController < ApplicationController
-  before_action :authenticate_v1_users_user!
-
   def show
     @pet = Pet.find_by(id: params[:id])
 

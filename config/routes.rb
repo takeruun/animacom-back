@@ -80,8 +80,8 @@ Rails.application.routes.draw do
       get '/followers/:user_id'  => 'index#followers'
     end
     namespace :pets do
-      get '/:user_id' => 'index#index'
-      get '/:id'      => 'show#show'
+      get '/users/:user_id' => 'index#index'
+      get '/:id'            => 'show#show'
     end
   end
   mount ActionCable.server => '/v1/cable'
