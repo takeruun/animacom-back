@@ -21,11 +21,11 @@ services:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - mysql-data:/var/lib/mysql
-  
+
   localstack:
-    image: localstack/localstack:latest
+    image: localstack/localstack:0.12.16
     ports:
-      - "4566:4566"
+      - '4566:4566'
     environment:
       SERVICES: s3
       DEFAULT_REGION: ap-northeast-1
