@@ -60,7 +60,7 @@ jobs:
           command: bundle exec rake db:create
       - run:
           name: S3 Bucket create
-          command: aws --endpoint-url=http://localhost:4566 s3 mb s3://anima-test
+          command: aws --endpoint-url=http://localhost:4566 s3 mb s3://anima
       - run:
           name: Run rspec
           command: |
