@@ -26,3 +26,9 @@ Things you may want to cover:
 ## プロジェット作成
 
 1. `docker-compose run --rm back rails new . --api --database=mysql --skip-test --force`
+
+## プロジェクトスタート
+
+1. `docker-compose build`
+
+2. `aws s3 mb s3://anima --endpoint-url=http://localhost:4566`

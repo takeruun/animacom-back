@@ -1,0 +1,1 @@
+json.partial! 'v1/users/follows/followers', followers: @followers, user: @user

@@ -24,7 +24,21 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
 
-    config.cache_store = :null_store
+    config.cache_store = :redis_cache_store, {
+      driver: :hiredis,
+      url: ENV['REDIS_URL'],
+      expires_in: (ENV['REDIS_EXPIRES_IN_MINUTES'] || 5).to_i.minutes,
+      connect_timeout: (ENV['REDIS_CONNECT_TIMEOUT_SECONDS'] || 1.0).to_f,
+      read_timeout: (ENV['REDIS_READ_TIMEOUT_SECONDS'] || 0.5).to_f,
+      write_timeout: (ENV['REDIS_WRITE_TIMEOUT_SECONDS'] || 0.5).to_f,
+      reconnect_attempts: (ENV['REDIS_RECONNECT_ATTEMPTS'] || 0).to_i,
+      reconnect_delay: (ENV['REDIS_RECONNECT_DELAY_SECONDS'] || 1.0).to_f,
+      reconnect_delay_max: (ENV['REDIS_RECONNECT_DELAY_MAX_SECONDS'] || 2.0).to_f,
+      error_handler: -> (method:, returning:, exception:) {
+        error_info = { on: "on cache_store error_handler", error: exception, method: method, returning: returning }
+        Rails.logger.error error_info
+      },
+    }
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
@@ -63,4 +77,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.action_cable.allowed_request_origins = ['http://anima-com.jp:3000']
+
+  config.logger = Logger.new(STDOUT)
+
+  Jbuilder.key_format camelize: :lower
 end

@@ -1,0 +1,37 @@
+ja:
+  time:
+    formats:
+      default: '%Y/%m/%d %H:%M'
+      date_only: '%Y/%m/%d'
+      datepicker: '%Y-%m-%d %H:%M'
+  activerecord:
+    attributes:
+      reaction:
+        kind: リアクション
+      user:
+        name: 名前
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+      post:
+        title: タイトル
+        body: 本文
+        category: カテゴリ
+      pet:
+        user: ユーザ
+        name: 名前
+        age: 年齢
+        gender: 性別
+        image: 写真
+
+  enums:
+    reaction:
+      kind:
+        cute: かわいい
+        fav: お気に入り
+        good: いいね
+        cool: かっこいい
+    pet:
+      gender:
+        men: オス
+        women: メス
