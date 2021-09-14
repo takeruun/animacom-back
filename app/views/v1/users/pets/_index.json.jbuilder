@@ -5,3 +5,6 @@ json.gender do
   json.id pet.gender_before_type_cast
   json.name pet.gender_i18n
 end
+json.image do
+  json.image_path pet.image.url
+end

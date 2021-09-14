@@ -39,10 +39,12 @@ Rails.application.routes.draw do
         get     '/:id'  => 'show#show'
         delete  '/:id'  => 'destroy#destroy'
       end
-      get '/'         => 'index#index'
-      get '/my_page'  => 'show#my_page'
-      get '/:user_id' => 'show#show'
-      put '/'         => 'update#update'
+      get '/:user_id/pets'  => 'index#pets'
+      get '/:user_id/posts' => 'index#posts'
+      get '/'               => 'index#index'
+      get '/my_page'        => 'show#my_page'
+      get '/:user_id'       => 'show#show'
+      put '/'               => 'update#update'
     end
     namespace :posts do
       namespace :search do
