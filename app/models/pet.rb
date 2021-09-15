@@ -12,4 +12,8 @@ class Pet < ApplicationRecord
     men: 0,
     women: 1,
   }
+
+  def image_path
+    ENV['S3_ASSET_HOST'] + image.path
+  end
 end
