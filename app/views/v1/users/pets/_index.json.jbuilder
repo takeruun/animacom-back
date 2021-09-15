@@ -6,5 +6,5 @@ json.gender do
   json.name pet.gender_i18n
 end
 json.image do
-  json.image_path pet.image.url
+  json.image_path pet.image_path
 end
