@@ -5,6 +5,7 @@ FactoryBot.define do
     sequence(:nickname) { |n| "test_#{n}"}
     sequence(:password) { |n| "password"}
     sequence(:introduction) { |n| "introduction_#{n}" }
+    sequence(:image) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.png')) }
 
     trait(:with_posts) do
       after(:create) do |user, evaluator|

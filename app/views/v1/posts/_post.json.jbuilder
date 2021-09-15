@@ -8,7 +8,7 @@ json.created_at post.created_at
 
 json.images post.images do |image|
   json.id image.id
-  json.image_path image.image.url
+  json.image_path image.image_path
 end
 
 json.reactions post.reactions do |reaction|

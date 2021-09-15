@@ -2,7 +2,7 @@ json.id user.id
 json.name user.name
 json.nickname user.nickname
 json.image do
-  json.image_path user.image.url
+  json.image_path user.image_path
 end
 json.introduction user.introduction
 json.follower_count user.followers.count

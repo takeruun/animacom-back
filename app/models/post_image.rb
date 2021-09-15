@@ -4,4 +4,8 @@ class PostImage < ApplicationRecord
   belongs_to :post
 
   validates :image, presence: true
+
+  def image_path
+    ENV['S3_ASSET_HOST'] + image.path
+  end
 end

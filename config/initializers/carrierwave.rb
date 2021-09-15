@@ -2,7 +2,6 @@ CarrierWave.configure do |config|
   # config.asset_host = "http://localhost:3001"
 
   config.storage :fog
-  config.asset_host = "#{ENV['S3_ASSET_HOST']}/#{ENV['S3_IMAGE_BUCKET']}"
   config.fog_credentials = {
     provider: 'AWS',
     region: 'ap-northeast-1',

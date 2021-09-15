@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
   def follow?(user)
     followings_relationships.where(follow_id: user.id).present?
   end
+
+  def image_path
+    ENV['S3_ASSET_HOST'] + image.path
+  end
 end
