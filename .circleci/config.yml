@@ -98,9 +98,10 @@ jobs:
       - run:
           name: db migration
           command: |
-            if sudo is_changed "db"; then
-              sudo migrate
+            if bash is_changed "db"; then
+              bash migrate
             else
+              bash migrate
               echo "dbに変更無し"
             fi
 workflows:
