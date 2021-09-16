@@ -98,7 +98,7 @@ jobs:
       - run:
           name: db migration
           command: |
-            if is_changed "db"; then
+            if is_changed.sh "db"; then
               migrate
             else
               echo "dbに変更無し"
