@@ -3,6 +3,9 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.3
   aws-ecr: circleci/aws-ecr@6.15.3
   aws-ecs: circleci/aws-ecs@2.1.0
+common_stepup_commaand: &common_stepup_commaand
+  command: |
+    echo 'export PATH=$PATH:${CIRCLE_WORKING_DIRECTORY}/animacom-back/script' >> $BASH_ENV
 jobs:
   test:
     docker:
@@ -78,11 +81,38 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+  db_migrate:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+        environment:
+          RAILS_ENV: test
+    working_directory: ~/animacom-back
+    steps:
+      - checkout
+      - aws-cli/setup:
+          aws-access-key-id: ACCESS_KEY_ID
+          aws-secret-access-key: SECRET_ACCESS_KEY
+          aws-region: AWS_DEFAULT_REGION
+      - run:
+          name: db migration
+          command: |
+            if is_changed "db"; then
+              migrate
+            else
+              echo "dbに変更無し"
+            fi
 workflows:
   version: 2.1
   test:
     jobs:
       - test
+      - db_migrate:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - main
       - aws-ecr/build-and-push-image:
           requires:
             - test
