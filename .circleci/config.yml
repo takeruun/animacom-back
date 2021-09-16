@@ -95,7 +95,7 @@ jobs:
           aws-region: AWS_DEFAULT_REGION
       - run:
           <<: *common_stepup_command
-      - run: apt-get install -y sudo
+      - run: ls -la script/
       - run:
           name: db migration
           command: |
