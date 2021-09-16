@@ -12,5 +12,5 @@ aws ecs run-task \
   --cluster animacom-cluster \
   --task-definition animacom-task \
   --launch-type FARGATE \
-  --overrides file://run_task_db_migrate.json \
+  --overrides file://containers/db_migrate/run_task_db_migrate.json \
   --network-configuration "awsvpcConfiguration={subnets=[${subnets}],securityGroups=[${securityGroups}],assignPublicIp=${assignPublicIp}}"
