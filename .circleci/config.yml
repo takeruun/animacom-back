@@ -5,7 +5,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@2.1.0
 common_stepup_commaand: &common_stepup_commaand
   command: |
-    echo 'export PATH=$PATH:${CIRCLE_WORKING_DIRECTORY}/animacom-back/script' >> $BASH_ENV
+    echo 'export PATH=$PATH:${CIRCLE_WORKING_DIRECTORY}/script' >> $BASH_ENV
 jobs:
   test:
     docker:
@@ -60,10 +60,10 @@ jobs:
           name: Confiure Database setting
           command: mv ./config/database.yml.ci ./config/database.yml
       - run:
-          name: DB create
+          name: TEST DB create
           command: bundle exec rake db:create
       - run:
-          name: S3 Bucket create
+          name: TEST S3 Bucket create
           command: aws --endpoint-url=http://localhost:4566 s3 mb s3://anima
       - run:
           name: Run rspec
@@ -103,7 +103,7 @@ jobs:
             fi
 workflows:
   version: 2.1
-  test:
+  test_and_deploy:
     jobs:
       - test
       - db_migrate:
