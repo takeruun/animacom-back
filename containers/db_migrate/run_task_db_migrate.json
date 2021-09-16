@@ -1,0 +1,8 @@
+{
+  "containerOverrides": [
+      {
+          "name": "animacom_api",
+          "command": ["bundle", "exec", "rails", "db:migrate"]
+      }
+  ]
+}

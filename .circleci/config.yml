@@ -101,7 +101,6 @@ jobs:
             if bash is_changed "db"; then
               bash migrate
             else
-              bash migrate
               echo "dbに変更無し"
             fi
 workflows:
