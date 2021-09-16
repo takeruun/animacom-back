@@ -67,7 +67,7 @@ jobs:
           command: aws --endpoint-url=http://localhost:4566 s3 mb s3://anima
       - run:
           name: CIRCLE_WORKING_DIRECTORY
-          command: ecoh ${CIRCLE_WORKING_DIRECTORY}
+          command: echo ${CIRCLE_WORKING_DIRECTORY}
       - run:
           name: Run rspec
           command: |
