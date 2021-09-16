@@ -103,7 +103,7 @@ jobs:
             fi
 workflows:
   version: 2.1
-  test:
+  test_and_deploy:
     jobs:
       - test
       - db_migrate:
