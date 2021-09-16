@@ -95,11 +95,12 @@ jobs:
           aws-region: AWS_DEFAULT_REGION
       - run:
           <<: *common_stepup_command
+      - run: apt-get install -y sudo
       - run:
           name: db migration
           command: |
-            if ! is_changed.sh "db"; then
-              migrate.sh
+            if sudo is_changed "db"; then
+              sudo migrate
             else
               echo "dbに変更無し"
             fi
