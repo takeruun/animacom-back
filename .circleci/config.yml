@@ -98,8 +98,8 @@ jobs:
       - run:
           name: db migration
           command: |
-            if is_changed.sh "db"; then
-              migrate
+            if ! is_changed.sh "db"; then
+              migrate.sh
             else
               echo "dbに変更無し"
             fi
