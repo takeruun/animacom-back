@@ -55,3 +55,5 @@ gem 'rails-i18n'
 gem 'enum_help'
 
 gem 'ancestry'
+
+gem 'seed-fu', '~> 2.3'
