@@ -96,9 +96,9 @@ jobs:
       - run:
           <<: *common_stepup_command
       - run:
-          name: db migration
+          name: RUN db migration
           command: |
-            if bash is_changed "db"; then
+            if bash is_changed "db/migrate"; then
               bash migrate
             else
               echo "dbに変更無し"
